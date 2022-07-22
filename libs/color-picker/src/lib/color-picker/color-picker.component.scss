@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  padding: 20px;
+}
+
+.hex-color-input {
+  &.ng-invalid {
+    border-color: red;
+  }
+}
+
+.swatch-toolbar {
+  display: flex;
+  gap: 20px;
+}
+
+.swatch-container {
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.swatch-color {
+  height: 400px;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: inherit;
+}
+
+.swatch-specs {
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 2px solid black;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.swatch-spec-title {
+  font-weight: 700;
+}

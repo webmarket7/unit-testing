@@ -1,0 +1,18 @@
+<form class='swatch-toolbar' [formGroup]='form'>
+  <label for='hexColorInput'>Hex color</label>
+  <input id='hexColorInput' class='hex-color-input' type='text' formControlName='hexColor'>
+  <button type='button' [disabled]='form.invalid' (click)='setColor()'>Set color</button>
+</form>
+
+<div class='swatch-container'>
+  <div class='swatch-color' [style.backgroundColor]='selectedColor'></div>
+  <div class='swatch-specs'>
+    <p class='swatch-spec'>
+      <span class='swatch-spec-title'>Hex:</span> {{ selectedColor | uppercase }}
+    </p>
+    <p class='swatch-spec'>
+      <span class='swatch-spec-title'>RGBA:</span> {{ selectedColor | hexToRgba }}
+    </p>
+  </div>
+</div>
+

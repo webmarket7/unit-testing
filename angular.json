@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "color-picker": "libs/color-picker",
     "unit-testing": "apps/unit-testing",
     "unit-testing-e2e": "apps/unit-testing-e2e"
   }

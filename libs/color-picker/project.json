@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/color-picker/src",
+  "prefix": "dev-meetup",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/color-picker"],
+      "options": {
+        "jestConfig": "libs/color-picker/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/color-picker/**/*.ts",
+          "libs/color-picker/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

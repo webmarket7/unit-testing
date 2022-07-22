@@ -2,11 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ColorPickerModule } from '@dev-meetup/color-picker';
+
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ColorPickerModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
