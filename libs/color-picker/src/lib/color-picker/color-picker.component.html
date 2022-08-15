@@ -1,18 +1,29 @@
-<form class='swatch-toolbar' [formGroup]='form'>
+<form class='swatch-toolbar'
+      [formGroup]='form'
+      (submit)='setColor()'
+>
   <label for='hexColorInput'>Hex color</label>
-  <input id='hexColorInput' class='hex-color-input' type='text' formControlName='hexColor'>
-  <button type='button' [disabled]='form.invalid' (click)='setColor()'>Set color</button>
+  <input id='hexColorInput'
+         class='hex-color-input'
+         type='text'
+         formControlName='hexColor'
+  >
+  <button type='submit'
+          class='submit-button'
+          [attr.disabled]='submitButtonDisabled'
+  >Set color</button>
 </form>
 
 <div class='swatch-container'>
   <div class='swatch-color' [style.backgroundColor]='selectedColor'></div>
   <div class='swatch-specs'>
     <p class='swatch-spec'>
-      <span class='swatch-spec-title'>Hex:</span> {{ selectedColor | uppercase }}
+      <span class='swatch-spec-title '>Hex:</span>
+      <span class='hex-color'> {{ selectedColor | uppercase }}</span>
     </p>
     <p class='swatch-spec'>
-      <span class='swatch-spec-title'>RGBA:</span> {{ selectedColor | hexToRgba }}
+      <span class='swatch-spec-title'>RGBA:</span>
+      <span class='rgba-color'> {{ selectedColor | hexToRgba }}</span>
     </p>
   </div>
 </div>
-

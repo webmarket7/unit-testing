@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HEX_COLOR_PATTERN } from '../helpers/color-helpers';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
+import { HEX_COLOR_PATTERN, isValidHexColor } from '../helpers/color-helpers';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,11 +16,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./color-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ColorPickerComponent implements OnInit {
+export class ColorPickerComponent implements OnChanges {
   form: FormGroup;
 
   get hexColorControl(): FormControl {
     return this.form.get('hexColor') as FormControl;
+  }
+
+  get submitButtonDisabled(): true | null {
+    return this.form.invalid || null;
   }
 
   @Input() selectedColor: string | null = '';
@@ -21,14 +33,23 @@ export class ColorPickerComponent implements OnInit {
 
   constructor(private _fb: FormBuilder) {
     this.form = this._fb.group({
-      hexColor: ['', Validators.pattern(HEX_COLOR_PATTERN)]
+      hexColor: ['', [
+        Validators.required,
+        Validators.pattern(HEX_COLOR_PATTERN)
+      ]]
     });
   }
 
-  ngOnInit(): void {
-    this.form.patchValue({
-      hexColor: this.selectedColor
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    const selectedColorChange = changes['selectedColor'];
+    const currentSelectedColor = selectedColorChange.currentValue;
+
+    if (selectedColorChange
+      && currentSelectedColor !== this.hexColorControl.value
+      && isValidHexColor(currentSelectedColor)
+    ) {
+      this.hexColorControl.setValue(currentSelectedColor);
+    }
   }
 
   setColor(): void {
