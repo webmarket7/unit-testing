@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ColorPickerModule } from '@dev-meetup/color-picker';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -11,7 +11,7 @@ import { ColorPickerModule } from '@dev-meetup/color-picker';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ColorPickerModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
