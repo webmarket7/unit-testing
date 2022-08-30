@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CoreService } from '../../services/core-service.service';
+import { ColorPickerPageService } from './services/color-picker-page.service';
 
 
 @Component({
@@ -12,11 +12,11 @@ import { CoreService } from '../../services/core-service.service';
 export class ColorPickerPageComponent {
   selectedColor$: Observable<string | null>;
 
-  constructor(private _coreService: CoreService) {
-    this.selectedColor$ = this._coreService.selectedColor$;
+  constructor(private _colorPickerPageService: ColorPickerPageService) {
+    this.selectedColor$ = this._colorPickerPageService.selectedColor$;
   }
 
   onColorSelected(hexColor: string): void {
-    this._coreService.saveColor(hexColor);
+    this._colorPickerPageService.saveColor(hexColor);
   }
 }

@@ -1,0 +1,45 @@
+@mixin anchor-reset {
+  outline: none;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+}
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: #2597B9;
+}
+
+.code {
+  font-size: 66px;
+}
+
+.description {
+  font-size: 24px;
+}
+
+.home-button {
+  @include anchor-reset;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2597BB;
+  border-radius: 12px;
+  color: #FFFFFF;
+  padding: 0 32px;
+  cursor: pointer;
+}
